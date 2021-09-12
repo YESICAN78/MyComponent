@@ -1,5 +1,7 @@
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getData: {
-    list: "/sunapiInterface/sunapi/address",
+    list: "/address",
+    list1: "/getAdress",
   },
 };

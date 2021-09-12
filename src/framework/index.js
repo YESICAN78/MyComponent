@@ -4,3 +4,4 @@ export const MyLayout = require("./components/Layout").default;
 export const MyEnumSelect = require("./components/EnumSelect").default;
 export const MyButton = require("./components/Button").default;
 export const Message = require("./components/Message").default;
+export const MyRemoteSelect = require("./components/RemoteSelect").default;

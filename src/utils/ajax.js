@@ -61,9 +61,10 @@ export const ajaxSync = {
   async get(url, params, setOptions) {
     let err = null;
     let res = null;
+    const resUrl = urlFix(url);
     let options = { headers: { ...ajaxSync.headers }, ...setOptions };
     try {
-      res = await ajax.get(url, params, options);
+      res = await ajax.get(resUrl, params, options);
       if (res.state != 200) {
         err = new Error(res.msg);
       }

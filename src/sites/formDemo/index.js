@@ -5,9 +5,11 @@ import {
   MyLayout,
   MyEnumSelect,
   MyButton,
+  MyRemoteSelect,
 } from "../../framework";
 import getEnums from "./enums/index";
 import { getList } from "./services";
+import api from "./config/api";
 const { Item: FormItem, rules: rule } = MyForm;
 const { required, maxLength, minLength, onlyNumber, numberTwo, number } = rule;
 const { Row, Col } = MyLayout;
@@ -32,13 +34,18 @@ export default memo(() => {
     console.log(ff);
   }, [form]);
   const getData = async () => {
-    const res = await getList({
+    const { state, results } = await getList({
       phone: "18460005575",
     });
-    console.log(res);
+    if (state === 200 && results) {
+      console.log(results);
+    }
   };
   return (
     <>
+      <div style={{ textAlign: "center", fontSize: "25px", padding: "10px 0" }}>
+        组件封装
+      </div>
       <MyForm
         ref={fromRef}
         onSubmit={handleSubmit}
@@ -60,6 +67,13 @@ export default memo(() => {
                 multiple={true}
                 onChange={handleOnchange("select")}
               />
+            </FormItem>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={12}>
+            <FormItem label="支持远程搜索">
+              <MyRemoteSelect remoteUrl={api.getData.list1} />
             </FormItem>
           </Col>
         </Row>
