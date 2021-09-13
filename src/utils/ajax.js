@@ -18,7 +18,7 @@ export const ajax = {
     return new Promise((resolve, reject) => {
       const resUrl = urlFix(url);
       axios
-        .get(resUrl, {params:formatResult})//get传参必须{params：{需要传的参数}}
+        .get(resUrl, { params: formatResult }) //get传参必须{params：{需要传的参数}}
         .then((res) => {
           if (res) {
             resolve(res.data);
@@ -61,10 +61,9 @@ export const ajaxSync = {
   async get(url, params, setOptions) {
     let err = null;
     let res = null;
-    const resUrl = urlFix(url);
     let options = { headers: { ...ajaxSync.headers }, ...setOptions };
     try {
-      res = await ajax.get(resUrl, params, options);
+      res = await ajax.get(url, params, options);
       if (res.state != 200) {
         err = new Error(res.msg);
       }
